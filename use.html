@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Utilisateurs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        th { background-color: rgb(7, 145, 7); }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 85%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Liste de Congé</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Matricule</th>
+                    <th>Nom et Prénom</th>
+                    <th>Tel</th>
+                    <th>Ligne</th>
+                    <th>Chef</th>
+                    <th>Date de la demande</th>
+                    <th>Nombre de jours de congé</th>
+                    <th>Type de congé</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const tableBody = document.getElementById('userTableBody');
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.matricule}</td>
+                    <td>${user.nom_prenom}</td>
+                    <td>${user.tel}</td>
+                    <td>${user.ligne}</td>
+                    <td>${user.chef}</td>
+                    <td>${user.date_demande}</td>
+                    <td>${user.nb_jours_conge}</td>
+                    <td>${user.type_conge}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>

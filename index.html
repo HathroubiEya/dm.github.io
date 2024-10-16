@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Utilisateur</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 85%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 6px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="userForm">
+            <h1>Demande de congé</h1>
+            <table>
+                <tr>
+                    <th>Matricule</th>
+                    <td><input type="text" id="mat"></td>
+                </tr>
+                <tr>
+                    <th>Nom & Prénom</th>
+                    <td><input type="text" id="np"></td>
+                </tr>
+                <tr>
+                    <th>Tel</th>
+                    <td><input type="tel" id="tel"></td>
+                </tr>
+                <tr>
+                    <th>Ligne</th>
+                    <td>
+                        <select id="ligne" required>
+                            <option>LFGR</option>
+                            <option>PAPAL</option>
+                            <option>LFMO</option>
+                            <option>HYDRO</option>
+                            <option>LFAV</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Chef</th>
+                    <td>
+                        <select id="chef" required>
+                            <option>Ahmed Dridi</option>
+                            <option>Amine Manaii</option>
+                            <option>Shohdy Khmissi</option>
+                            <option>Nabil Ahmadi</option>
+                            <option>Yassine Jendoubi</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date de la demande</th>
+                    <td><input type="date" id="date"></td>
+                </tr>
+                <tr>
+                    <th>Nombre de jours de congés</th>
+                    <td><input type="number" min="1" id="nbjours" required></td>
+                </tr>
+                <tr>
+                    <th>Type de congé</th>
+                    <td>
+                        <select id="type" required>
+                            <option value="payes">Congés payés</option>
+                            <option value="sans_solde">Congés sans solde</option>
+                            <option value="autre">Autre (spécifier)</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div class="button-container">
+                <input type="button" class="btn btn-success" value="Ajouter" onclick="submitForm()" style="margin-left:80%">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById('userForm');
+            var user = {
+                matricule: form.querySelector('#mat').value,
+                nom_prenom: form.querySelector('#np').value,
+                tel: form.querySelector('#tel').value,
+                ligne: form.querySelector('#ligne').value,
+                chef: form.querySelector('#chef').value,
+                date_demande: form.querySelector('#date').value,
+                nb_jours_conge: form.querySelector('#nbjours').value,
+                type_conge: form.querySelector('#type').value
+            };
+
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert("Demande de congé soumise avec succès !");
+            window.location.href = 'use.html'; // Redirect to the list page
+        }
+    </script>
+</body>
+</html>

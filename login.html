@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <a href="script.js"></a>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <style>/* style.css */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .wrapper {
+            max-width: 400px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1 {
+            color: rgb(37, 35, 35);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .input-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(0, 128, 0, 0.4);
+        }
+        
+        .box-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        </style>
+  <div class="wrapper">
+    <form id="loginForm" action="">
+        <h1>Login</h1>
+        <div class="input-box">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <box-icon type="solid" name="user"></box-icon>
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <box-icon type="solid" name="lock-alt"></box-icon>
+        </div>
+        <div class="remember-forgot">
+            <label>
+                <input type="checkbox" name="remember"> Remember me
+            </label>
+        </div>
+        <div>
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
+    <script >// script.js
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+        
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                // Récupération des valeurs des champs
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.querySelector('input[name="remember"]').checked;
+        
+                // Validation du formulaire - exemple simple
+                if ((username === 'Salim Aouidette' && password === 'gH9p2eF7')||(username === 'Souheil Hasni' && password === 'rT5kD6vX')||
+                (username === 'Yassine Jendoubi' && password === 'jA4bN1wY')||(username === 'Ahmed Dridi' && password === 'sQ8mZ3cR')||
+                (username === 'Shohdy Khmissi' && password === 'dE2xL4up') ){
+                    // Exemple de redirection vers une autre page après la soumission
+                    window.location.href = 'use.html'; // Redirection vers la page de tableau de bord
+                    // Vous pouvez ajouter d'autres actions ici après la connexion réussie
+                } else {
+                   alert('Identifiant ou mot de passe incorrect.');
+               }
+            });
+        });
+        </script>
+  </div>  
+</body>
+</html>
